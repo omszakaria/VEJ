@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  OptionsViewController.h
 //  VEJ
 //
 //  Created by iD Student on 7/1/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface OptionsViewController : UIViewController
 
 @end
