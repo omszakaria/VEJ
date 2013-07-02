@@ -18,6 +18,11 @@
 		3F157C12178318BA005F7DCE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F157C09178318BA005F7DCE /* UIImageView+AFNetworking.m */; };
 		3F157C1417832330005F7DCE /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F157C1317832330005F7DCE /* Twitter.framework */; };
 		3F157C161783233D005F7DCE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F157C151783233D005F7DCE /* Accounts.framework */; };
+		3F157C18178338FD005F7DCE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F157C17178338FD005F7DCE /* Social.framework */; };
+		3F157C1B178358E2005F7DCE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F157C19178358E2005F7DCE /* icon.png */; };
+		3F157C1C178358E2005F7DCE /* icon@114px.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F157C1A178358E2005F7DCE /* icon@114px.png */; };
+		3F157C2017835F69005F7DCE /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F157C1E17835F69005F7DCE /* PlacesViewController.m */; };
+		3F157C2117835F69005F7DCE /* PlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F157C1F17835F69005F7DCE /* PlacesViewController.xib */; };
 		3F5BE86B1782171900FC8BF9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BE86A1782171900FC8BF9 /* CoreLocation.framework */; };
 		3F5BE86D17821BA300FC8BF9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BE86C17821BA300FC8BF9 /* MapKit.framework */; };
 		3F5DC4C41782044E003650F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5DC4C31782044E003650F4 /* UIKit.framework */; };
@@ -58,6 +63,12 @@
 		3F157C09178318BA005F7DCE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		3F157C1317832330005F7DCE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		3F157C151783233D005F7DCE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		3F157C17178338FD005F7DCE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		3F157C19178358E2005F7DCE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		3F157C1A178358E2005F7DCE /* icon@114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@114px.png"; sourceTree = "<group>"; };
+		3F157C1D17835F69005F7DCE /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
+		3F157C1E17835F69005F7DCE /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
+		3F157C1F17835F69005F7DCE /* PlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacesViewController.xib; sourceTree = "<group>"; };
 		3F5BE86A1782171900FC8BF9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F5BE86C17821BA300FC8BF9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3F5DC4C01782044E003650F4 /* VEJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VEJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F157C18178338FD005F7DCE /* Social.framework in Frameworks */,
 				3F157C161783233D005F7DCE /* Accounts.framework in Frameworks */,
 				3F157C1417832330005F7DCE /* Twitter.framework in Frameworks */,
 				3F5BE86D17821BA300FC8BF9 /* MapKit.framework in Frameworks */,
@@ -127,9 +139,20 @@
 			path = "../../../Downloads/AFNetworking-AFNetworking-d492c4b/AFNetworking";
 			sourceTree = "<group>";
 		};
+		3F157C2217835F82005F7DCE /* PlacesController */ = {
+			isa = PBXGroup;
+			children = (
+				3F157C1D17835F69005F7DCE /* PlacesViewController.h */,
+				3F157C1E17835F69005F7DCE /* PlacesViewController.m */,
+				3F157C1F17835F69005F7DCE /* PlacesViewController.xib */,
+			);
+			name = PlacesController;
+			sourceTree = "<group>";
+		};
 		3F5DC4B71782044E003650F4 = {
 			isa = PBXGroup;
 			children = (
+				3F157C2217835F82005F7DCE /* PlacesController */,
 				3F5DC4C91782044E003650F4 /* VEJ */,
 				3F5DC4C21782044E003650F4 /* Frameworks */,
 				3F5DC4C11782044E003650F4 /* Products */,
@@ -147,6 +170,7 @@
 		3F5DC4C21782044E003650F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F157C17178338FD005F7DCE /* Social.framework */,
 				3F157C1317832330005F7DCE /* Twitter.framework */,
 				3F157C151783233D005F7DCE /* Accounts.framework */,
 				3F5BE86C17821BA300FC8BF9 /* MapKit.framework */,
@@ -177,6 +201,8 @@
 		3F5DC4CA1782044E003650F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3F157C19178358E2005F7DCE /* icon.png */,
+				3F157C1A178358E2005F7DCE /* icon@114px.png */,
 				3F5DC4CB1782044E003650F4 /* VEJ-Info.plist */,
 				3F5DC4CC1782044E003650F4 /* InfoPlist.strings */,
 				3F5DC4CF1782044E003650F4 /* main.m */,
@@ -257,6 +283,9 @@
 				3F5DC4E01782044E003650F4 /* MainViewController_iPhone.xib in Resources */,
 				3F5DC4E31782044E003650F4 /* MainViewController_iPad.xib in Resources */,
 				3F5DC4ED17820469003650F4 /* OptionsViewController.xib in Resources */,
+				3F157C1B178358E2005F7DCE /* icon.png in Resources */,
+				3F157C1C178358E2005F7DCE /* icon@114px.png in Resources */,
+				3F157C2117835F69005F7DCE /* PlacesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +309,7 @@
 				3F157C10178318BA005F7DCE /* AFURLConnectionOperation.m in Sources */,
 				3F157C11178318BA005F7DCE /* AFXMLRequestOperation.m in Sources */,
 				3F157C12178318BA005F7DCE /* UIImageView+AFNetworking.m in Sources */,
+				3F157C2017835F69005F7DCE /* PlacesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
