@@ -32,12 +32,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationItem setTitle:@"VEJ"];
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.0 green:0.7 blue:0.0 alpha:1.0]];
+    UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStyleBordered target:self action:@selector(tweetTapped:)];
     UIBarButtonItem *optionsButton =
     [[UIBarButtonItem alloc]
      initWithTitle:@"Options"
      style: UIBarButtonItemStylePlain
      target:self action:@selector(switchToOptionsView:)];
-    self.navigationItem.rightBarButtonItem = optionsButton;
+    self.navigationItem.leftBarButtonItem = optionsButton;
+    self.navigationItem.rightBarButtonItem = tweetButton;
     
 }
 
@@ -54,7 +56,7 @@
     [self.navigationController pushViewController:self.optionsViewController animated:YES];
 }
 
-- (IBAction)tweetTapped:(id)sender {
+- (void)tweetTapped:(id)sender {
     {
         if ([TWTweetComposeViewController canSendTweet])
         {

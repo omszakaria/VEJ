@@ -167,8 +167,8 @@
 				3F5DC4DC1782044E003650F4 /* MainViewController.m */,
 				3F5DC4DE1782044E003650F4 /* MainViewController_iPhone.xib */,
 				3F5DC4E11782044E003650F4 /* MainViewController_iPad.xib */,
-				3F157BF6178318BA005F7DCE /* AFNetworking */,
 				3F5DC4EE178204C4003650F4 /* OptionsMenu */,
+				3F157BF6178318BA005F7DCE /* AFNetworking */,
 				3F5DC4CA1782044E003650F4 /* Supporting Files */,
 			);
 			path = VEJ;

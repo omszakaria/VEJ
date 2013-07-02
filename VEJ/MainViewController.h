@@ -18,6 +18,5 @@
 @property (strong, nonatomic) UIViewController* optionsViewController;
 
 -(IBAction)switchToOptionsView :(id)sender;
--(IBAction)tweetTapped:(id)sender;
 
 @end
