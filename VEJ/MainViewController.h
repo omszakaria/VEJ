@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
-
+#import <Twitter/Twitter.h>
+#import <Accounts/Accounts.h>
 
 @interface MainViewController : UIViewController <CLLocationManagerDelegate>
 
@@ -17,5 +18,6 @@
 @property (strong, nonatomic) UIViewController* optionsViewController;
 
 -(IBAction)switchToOptionsView :(id)sender;
+-(IBAction)tweetTapped:(id)sender;
 
 @end

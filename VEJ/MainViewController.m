@@ -54,6 +54,27 @@
     [self.navigationController pushViewController:self.optionsViewController animated:YES];
 }
 
+- (IBAction)tweetTapped:(id)sender {
+    {
+        if ([TWTweetComposeViewController canSendTweet])
+        {
+            TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
+            [tweetSheet setInitialText:
+             @""];
+            [self presentModalViewController:tweetSheet animated:YES];
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"Sorry"
+                                      message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
+                                      delegate:self
+                                      cancelButtonTitle:@"OK"                                                   
+                                      otherButtonTitles:nil];
+            [alertView show];
+        }
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
