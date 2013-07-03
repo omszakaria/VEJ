@@ -7,10 +7,14 @@
 //
 
 #import "MainViewController.h"
-#import <Social/Social.h>
+
+
+
 #define METERS_PER_MILE 1609.344
 
+
 @interface MainViewController ()
+
 
 @end
 
@@ -18,7 +22,7 @@
     CLLocationManager* locationManager;
 }
 
-@synthesize optionsViewController;
+@synthesize optionsViewController, mapView;
 
 - (void)viewDidLoad
 {
@@ -29,11 +33,30 @@
     locationManager.distanceFilter = 1.0;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    UILongPressGestureRecognizer* longTouch = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(processLongTouch:)];
+    longTouch.minimumPressDuration = 2.0; //user needs to press for 2 seconds
+    [mapView addGestureRecognizer:longTouch];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *currentLocation = [locations lastObject];
     NSLog(@"lat: %f lon: %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+}
+
+-(void)processLongTouch:(UIGestureRecognizer*)gestureRecognizer
+{
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
+        return;
+    
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate =
+    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    
+    MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithCoordinate:touchMapCoordinate];
+    annot.coordinate = touchMapCoordinate;
+
+    [self.mapView addAnnotation:annot];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{

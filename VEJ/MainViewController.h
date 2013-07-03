@@ -11,15 +11,19 @@
 #import <MapKit/MapKit.h>
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
+#import <Social/Social.h>
+#import "MyMKAnnotation.h"
 
 @interface MainViewController : UIViewController <CLLocationManagerDelegate>
 
+
+
 @property (nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) UIViewController* optionsViewController;
-
 @property(weak, nonatomic) IBOutlet MKMapView* mapView;
 
--(IBAction)switchToOptionsView :(id)sender;
+
+- (IBAction)switchToOptionsView :(id)sender;
 
 - (IBAction)postToFacebook:(id)sender;
 

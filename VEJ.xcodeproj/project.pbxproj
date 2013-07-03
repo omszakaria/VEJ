@@ -39,6 +39,8 @@
 		3F5DC4E31782044E003650F4 /* MainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4E11782044E003650F4 /* MainViewController_iPad.xib */; };
 		3F5DC4EC17820469003650F4 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DC4EA17820469003650F4 /* OptionsViewController.m */; };
 		3F5DC4ED17820469003650F4 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4EB17820469003650F4 /* OptionsViewController.xib */; };
+		3FFAC20C17846AC200857F98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFAC20B17846AC200857F98 /* MessageUI.framework */; };
+		3FFAC21217847E8500857F98 /* MyMKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAC21117847E8500857F98 /* MyMKAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,9 @@
 		3F5DC4E917820469003650F4 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
 		3F5DC4EA17820469003650F4 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
 		3F5DC4EB17820469003650F4 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
+		3FFAC20B17846AC200857F98 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		3FFAC21017847E8500857F98 /* MyMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMKAnnotation.h; sourceTree = "<group>"; };
+		3FFAC21117847E8500857F98 /* MyMKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMKAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FFAC20C17846AC200857F98 /* MessageUI.framework in Frameworks */,
 				3F157C18178338FD005F7DCE /* Social.framework in Frameworks */,
 				3F157C161783233D005F7DCE /* Accounts.framework in Frameworks */,
 				3F157C1417832330005F7DCE /* Twitter.framework in Frameworks */,
@@ -170,6 +176,7 @@
 		3F5DC4C21782044E003650F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FFAC20B17846AC200857F98 /* MessageUI.framework */,
 				3F157C17178338FD005F7DCE /* Social.framework */,
 				3F157C1317832330005F7DCE /* Twitter.framework */,
 				3F157C151783233D005F7DCE /* Accounts.framework */,
@@ -189,6 +196,8 @@
 				3F5DC4D31782044E003650F4 /* AppDelegate.m */,
 				3F5DC4DB1782044E003650F4 /* MainViewController.h */,
 				3F5DC4DC1782044E003650F4 /* MainViewController.m */,
+				3FFAC21017847E8500857F98 /* MyMKAnnotation.h */,
+				3FFAC21117847E8500857F98 /* MyMKAnnotation.m */,
 				3F5DC4DE1782044E003650F4 /* MainViewController_iPhone.xib */,
 				3F5DC4E11782044E003650F4 /* MainViewController_iPad.xib */,
 				3F5DC4EE178204C4003650F4 /* OptionsMenu */,
@@ -310,6 +319,7 @@
 				3F157C11178318BA005F7DCE /* AFXMLRequestOperation.m in Sources */,
 				3F157C12178318BA005F7DCE /* UIImageView+AFNetworking.m in Sources */,
 				3F157C2017835F69005F7DCE /* PlacesViewController.m in Sources */,
+				3FFAC21217847E8500857F98 /* MyMKAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
