@@ -129,6 +129,52 @@
 
 }
 
+- (IBAction)getFeedback:(id)sender {
+    if([MFMailComposeViewController canSendMail] == YES){
+        //set up
+        _myMail = [[MFMailComposeViewController alloc]init];
+        _myMail.mailComposeDelegate = self;
+        
+        //set the subject
+        [_myMail setSubject:@"App Feedback"];
+        
+        //recipients of feedback
+        NSArray* toRecipients =[[NSArray alloc] initWithObjects:@"omszakaria@gmail.com", nil];
+        [_myMail setToRecipients:toRecipients];
+        
+        //cc recips
+        NSArray* ccRecipients =[[NSArray alloc] initWithObjects:@"", nil];
+        [_myMail setCcRecipients:ccRecipients];
+        
+        //bcc recips
+        NSArray* bccRecipients =[[NSArray alloc] initWithObjects:@"", nil];
+        [_myMail setBccRecipients:bccRecipients];
+        
+        //add attachment
+        UIImage* iconImage = [UIImage imageNamed:@"icon@114px.png"];
+        NSData* imageData = UIImagePNGRepresentation(iconImage);
+        [_myMail addAttachmentData:imageData mimeType:@"image/png" fileName:@"icon"];
+        
+        //adding text to message body
+        NSString* sentFrom = @"Email sent from my app" ;
+        [_myMail setMessageBody:sentFrom isHTML:YES];
+        
+        //display theviewcontroller
+        [self presentViewController:_myMail animated:YES completion:Nil];
+        
+    }
+    else{
+        //error button
+        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This is device does not have email enabled" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+        [errorAlert show];
+    }
+
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    [self dismissViewControllerAnimated:YES completion:Nil];
+}
+
 - (void)tweetTapped:(id)sender {
     {
         if ([TWTweetComposeViewController canSendTweet])

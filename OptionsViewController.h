@@ -11,7 +11,8 @@
 
 @interface OptionsViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
-@property(strong, nonatomic) MFMailComposeViewController* myMail;
+@property (strong, nonatomic) MFMailComposeViewController* myMail;
+
 
 - (IBAction)sendFeedback:(id)sender;
 @end

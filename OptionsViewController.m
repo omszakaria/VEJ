@@ -39,6 +39,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (IBAction)sendFeedback:(id)sender {
     NSLog(@"send feedback button pressed");
     if([MFMailComposeViewController canSendMail] == YES){

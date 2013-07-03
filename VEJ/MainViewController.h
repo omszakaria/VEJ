@@ -13,16 +13,18 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import "MyMKAnnotation.h"
+#import <MessageUI/MessageUI.h>
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate, UIAlertViewDelegate>
+@interface MainViewController : UIViewController <CLLocationManagerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) UIViewController* optionsViewController;
 @property (weak, nonatomic) IBOutlet MKMapView* mapView;
-
+@property (strong, nonatomic) MFMailComposeViewController* myMail;
 
 - (IBAction)switchToOptionsView :(id)sender;
 
 - (IBAction)postToFacebook:(id)sender;
+- (IBAction)getFeedback:(id)sender;
 
 @end
