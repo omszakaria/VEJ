@@ -40,12 +40,37 @@
     NSLog(@"Hello World");
     
     NSDictionary *JSONData = [self populate];
-    
+    [self populateMap:JSONData];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *currentLocation = [locations lastObject];
     NSLog(@"lat: %f lon: %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+}
+
+-(void)populateMap:(NSDictionary*) data
+{
+    NSLog(@"keys: %@", [data allKeys]);
+    NSLog(@"values: %@", [data allValues]);
+    
+    for(NSString* title in [data allKeys]){
+        NSDictionary* locData = [data objectForKey:title];
+        //lat
+        NSString* latitude = [locData objectForKey:@"latitude"];
+        //long
+        NSString* longitude = [locData objectForKey:@"longitude"];
+        //subtitle
+        NSString* subtitle = [locData objectForKey:@"subtitle"];
+        
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
+        MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithCoordinate:coordinates];
+        annot.coordinate = coordinates;
+        annot.title = title;
+        annot.subtitle = subtitle;
+    
+        [self.mapView addAnnotation:annot];
+
+    }
 }
 
 -(void)processLongTouch:(UIGestureRecognizer*)gestureRecognizer
