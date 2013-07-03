@@ -13,6 +13,5 @@
 
 @property (strong, nonatomic) MFMailComposeViewController* myMail;
 
-
 - (IBAction)sendFeedback:(id)sender;
 @end

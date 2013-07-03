@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "OptionsViewController.h"
 
 
 
@@ -144,7 +145,7 @@
 
 -(IBAction)switchToOptionsView:(id)sender
 {
-    self.optionsViewController = [[UIViewController alloc] initWithNibName:@"OptionsViewController" bundle:nil];
+    self.optionsViewController = [[OptionsViewController alloc] initWithNibName:@"OptionsViewController" bundle:nil];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.optionsViewController.title=@"Options";
     [self.navigationController pushViewController:self.optionsViewController animated:YES];
@@ -162,47 +163,6 @@
 
 }
 
-- (IBAction)getFeedback:(id)sender {
-    if([MFMailComposeViewController canSendMail] == YES){
-        //set up
-        _myMail = [[MFMailComposeViewController alloc]init];
-        _myMail.mailComposeDelegate = self;
-        
-        //set the subject
-        [_myMail setSubject:@"App Feedback"];
-        
-        //recipients of feedback
-        NSArray* toRecipients =[[NSArray alloc] initWithObjects:@"omszakaria@gmail.com", nil];
-        [_myMail setToRecipients:toRecipients];
-        
-        //cc recips
-        NSArray* ccRecipients =[[NSArray alloc] initWithObjects:@"", nil];
-        [_myMail setCcRecipients:ccRecipients];
-        
-        //bcc recips
-        NSArray* bccRecipients =[[NSArray alloc] initWithObjects:@"", nil];
-        [_myMail setBccRecipients:bccRecipients];
-        
-        //add attachment
-        UIImage* iconImage = [UIImage imageNamed:@"icon@114px.png"];
-        NSData* imageData = UIImagePNGRepresentation(iconImage);
-        [_myMail addAttachmentData:imageData mimeType:@"image/png" fileName:@"icon"];
-        
-        //adding text to message body
-        NSString* sentFrom = @"Feedback:" ;
-        [_myMail setMessageBody:sentFrom isHTML:YES];
-        
-        //display theviewcontroller
-        [self presentViewController:_myMail animated:YES completion:Nil];
-        
-    }
-    else{
-        //error button
-        UIAlertView* errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This is device does not have email enabled" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];
-        [errorAlert show];
-    }
-
-}
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     [self dismissViewControllerAnimated:YES completion:Nil];
