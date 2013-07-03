@@ -153,12 +153,12 @@
 				3F157C1F17835F69005F7DCE /* PlacesViewController.xib */,
 			);
 			name = PlacesController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		3F5DC4B71782044E003650F4 = {
 			isa = PBXGroup;
 			children = (
-				3F157C2217835F82005F7DCE /* PlacesController */,
 				3F5DC4C91782044E003650F4 /* VEJ */,
 				3F5DC4C21782044E003650F4 /* Frameworks */,
 				3F5DC4C11782044E003650F4 /* Products */,
@@ -201,6 +201,7 @@
 				3F5DC4DE1782044E003650F4 /* MainViewController_iPhone.xib */,
 				3F5DC4E11782044E003650F4 /* MainViewController_iPad.xib */,
 				3F5DC4EE178204C4003650F4 /* OptionsMenu */,
+				3F157C2217835F82005F7DCE /* PlacesController */,
 				3F157BF6178318BA005F7DCE /* AFNetworking */,
 				3F5DC4CA1782044E003650F4 /* Supporting Files */,
 			);

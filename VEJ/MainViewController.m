@@ -34,7 +34,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     UILongPressGestureRecognizer* longTouch = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(processLongTouch:)];
-    longTouch.minimumPressDuration = 2.0; //user needs to press for 2 seconds
+    longTouch.minimumPressDuration = 1.5; //user needs to press for 1.5 seconds
     [mapView addGestureRecognizer:longTouch];
 }
 
@@ -54,8 +54,11 @@
     
     MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithCoordinate:touchMapCoordinate];
     annot.coordinate = touchMapCoordinate;
+    [self persist:@{annot.title : @{@"latitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.latitude],
+                                    @"longitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.longitude]}}];
 
     [self.mapView addAnnotation:annot];
+    NSLog(@"%@", [self populate]);
     
 }
 
@@ -129,7 +132,39 @@
     return [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter];
 }
 
+-(NSDictionary *)populate
+{
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
+    NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    
+    NSError *error;
+    
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+    [fileHandler closeFile];
+    
+    return jsonDictionary;
+}
 
+-(BOOL)persist:(NSDictionary*)info
+{
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
+    NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    //build an info object and convert to json
+    
+    //convert object to data
+    NSError* error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info
+                                                       options:NSJSONWritingPrettyPrinted error:&error];
+    [jsonData writeToFile:path options:NSDataWritingAtomic error:&error];
+    [fileHandler closeFile];
+    return true;
+}
 
 - (void)didReceiveMemoryWarning
 {
