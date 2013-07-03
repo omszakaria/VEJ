@@ -111,11 +111,16 @@
         annot.coordinate = touchMapCoordinate;
         annot.title = [[alertView textFieldAtIndex:0] text];
         annot.subtitle = [[alertView textFieldAtIndex:1]text];
-        [self persist:@{annot.title : @{
-         @"subtitle": annot.subtitle,
-         @"latitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.latitude],
-         @"longitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.longitude]}
-         }];
+        
+        NSDictionary* newEntry = @{annot.title : @{
+                                           @"subtitle": annot.subtitle,
+                                           @"latitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.latitude],
+                                           @"longitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.longitude]}
+                                   };
+        NSMutableDictionary* persistedData = [NSMutableDictionary dictionaryWithDictionary:[self populate]];
+        [persistedData setValuesForKeysWithDictionary:newEntry];
+        
+        [self persist:persistedData];
         
         [self.mapView addAnnotation:annot];
         NSLog(@"%@", [self populate]);
@@ -184,7 +189,7 @@
         [_myMail addAttachmentData:imageData mimeType:@"image/png" fileName:@"icon"];
         
         //adding text to message body
-        NSString* sentFrom = @"Email sent from my app" ;
+        NSString* sentFrom = @"Feedback:" ;
         [_myMail setMessageBody:sentFrom isHTML:YES];
         
         //display theviewcontroller
