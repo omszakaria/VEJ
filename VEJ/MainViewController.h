@@ -14,13 +14,11 @@
 #import <Social/Social.h>
 #import "MyMKAnnotation.h"
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate>
-
-
+@interface MainViewController : UIViewController <CLLocationManagerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) UIViewController* optionsViewController;
-@property(weak, nonatomic) IBOutlet MKMapView* mapView;
+@property (weak, nonatomic) IBOutlet MKMapView* mapView;
 
 
 - (IBAction)switchToOptionsView :(id)sender;

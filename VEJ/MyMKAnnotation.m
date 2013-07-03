@@ -15,8 +15,8 @@
 - (id)initWithCoordinate:(CLLocationCoordinate2D)initCoordinate
 {
     self.coordinate = initCoordinate;
-    self.title = @"Great Food";
-    self.subtitle = @"Vege food";
+    self.title = @"Placeholder Name";
+    self.subtitle = @"Placeholder Description";
     return self;
 }
 

@@ -20,6 +20,7 @@
 
 @implementation MainViewController {
     CLLocationManager* locationManager;
+    CLLocationCoordinate2D touchMapCoordinate;
 }
 
 @synthesize optionsViewController, mapView;
@@ -45,21 +46,51 @@
 
 -(void)processLongTouch:(UIGestureRecognizer*)gestureRecognizer
 {
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
         return;
+    }
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
-    CLLocationCoordinate2D touchMapCoordinate =
-    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
-    MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithCoordinate:touchMapCoordinate];
-    annot.coordinate = touchMapCoordinate;
-    [self persist:@{annot.title : @{@"latitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.latitude],
-                                    @"longitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.longitude]}}];
+    UIAlertView *annotationInfoAlert = [[UIAlertView alloc] initWithTitle:@"Add Location" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [annotationInfoAlert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+    [[annotationInfoAlert textFieldAtIndex:1] setSecureTextEntry:NO];
+    
+    UITextField *annotationTitleTextField = [annotationInfoAlert textFieldAtIndex:0];
+    annotationTitleTextField.placeholder = @"Name";
+    
+    UITextField *annotationSubtitleTextField = [annotationInfoAlert textFieldAtIndex:1];
+    annotationSubtitleTextField.placeholder = @"Description";
+    
+    [annotationInfoAlert show];
+}
 
-    [self.mapView addAnnotation:annot];
-    NSLog(@"%@", [self populate]);
-    
+-(BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
+    NSString *titleText = [[alertView textFieldAtIndex:0] text];
+    NSString *subtitleText = [[alertView textFieldAtIndex:1] text];
+    if ([titleText length] > 0 && [subtitleText length] > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithCoordinate:touchMapCoordinate];
+        annot.coordinate = touchMapCoordinate;
+        annot.title = [[alertView textFieldAtIndex:0] text];
+        annot.subtitle = [[alertView textFieldAtIndex:1]text];
+        [self persist:@{annot.title : @{
+         @"subtitle": annot.subtitle,
+         @"latitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.latitude],
+         @"longitude": [NSString stringWithFormat:@"%f", touchMapCoordinate.longitude]}
+         }];
+        
+        [self.mapView addAnnotation:annot];
+        NSLog(@"%@", [self populate]);
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
