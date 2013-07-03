@@ -215,7 +215,7 @@
             TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
             [tweetSheet setInitialText:
              @""];
-            [self presentModalViewController:tweetSheet animated:YES];
+            [self presentViewController:tweetSheet animated:YES completion:nil];
         }
         else
         {
