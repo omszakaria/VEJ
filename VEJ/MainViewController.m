@@ -37,6 +37,7 @@
     UILongPressGestureRecognizer* longTouch = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(processLongTouch:)];
     longTouch.minimumPressDuration = 1.5; //user needs to press for 1.5 seconds
     [mapView addGestureRecognizer:longTouch];
+    NSLog(@"Hello World");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
