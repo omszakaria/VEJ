@@ -18,6 +18,18 @@
 		3F157C12178318BA005F7DCE /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F157C09178318BA005F7DCE /* UIImageView+AFNetworking.m */; };
 		3F157C1417832330005F7DCE /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F157C1317832330005F7DCE /* Twitter.framework */; };
 		3F157C161783233D005F7DCE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F157C151783233D005F7DCE /* Accounts.framework */; };
+		3F157C18178338FD005F7DCE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F157C17178338FD005F7DCE /* Social.framework */; };
+		3F157C1B178358E2005F7DCE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F157C19178358E2005F7DCE /* icon.png */; };
+		3F157C1C178358E2005F7DCE /* icon@114px.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F157C1A178358E2005F7DCE /* icon@114px.png */; };
+		3F157C2017835F69005F7DCE /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F157C1E17835F69005F7DCE /* PlacesViewController.m */; };
+		3F157C2117835F69005F7DCE /* PlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F157C1F17835F69005F7DCE /* PlacesViewController.xib */; };
+		3F209E641784A81E0059B559 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F209E631784A81E0059B559 /* Default.png */; };
+		3F209E661784A8230059B559 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F209E651784A8230059B559 /* Default@2x.png */; };
+		3F209E681784A8270059B559 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F209E671784A8270059B559 /* Default-568h@2x.png */; };
+		3F209E6A1784BD090059B559 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F209E691784BD090059B559 /* SystemConfiguration.framework */; };
+		3F209E6C1784BD100059B559 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F209E6B1784BD100059B559 /* MobileCoreServices.framework */; };
+		3F5B13081785C90500050558 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F5B13071785C90500050558 /* settings.plist */; };
+		3F5B130E1785FB5200050558 /* PlacesPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B130D1785FB5200050558 /* PlacesPoint.m */; };
 		3F5BE86B1782171900FC8BF9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BE86A1782171900FC8BF9 /* CoreLocation.framework */; };
 		3F5BE86D17821BA300FC8BF9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BE86C17821BA300FC8BF9 /* MapKit.framework */; };
 		3F5DC4C41782044E003650F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5DC4C31782044E003650F4 /* UIKit.framework */; };
@@ -26,14 +38,13 @@
 		3F5DC4CE1782044E003650F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4CC1782044E003650F4 /* InfoPlist.strings */; };
 		3F5DC4D01782044E003650F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DC4CF1782044E003650F4 /* main.m */; };
 		3F5DC4D41782044E003650F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DC4D31782044E003650F4 /* AppDelegate.m */; };
-		3F5DC4D61782044E003650F4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4D51782044E003650F4 /* Default.png */; };
-		3F5DC4D81782044E003650F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4D71782044E003650F4 /* Default@2x.png */; };
-		3F5DC4DA1782044E003650F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4D91782044E003650F4 /* Default-568h@2x.png */; };
 		3F5DC4DD1782044E003650F4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DC4DC1782044E003650F4 /* MainViewController.m */; };
 		3F5DC4E01782044E003650F4 /* MainViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4DE1782044E003650F4 /* MainViewController_iPhone.xib */; };
 		3F5DC4E31782044E003650F4 /* MainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4E11782044E003650F4 /* MainViewController_iPad.xib */; };
 		3F5DC4EC17820469003650F4 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5DC4EA17820469003650F4 /* OptionsViewController.m */; };
 		3F5DC4ED17820469003650F4 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DC4EB17820469003650F4 /* OptionsViewController.xib */; };
+		3FFAC20C17846AC200857F98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFAC20B17846AC200857F98 /* MessageUI.framework */; };
+		3FFAC21217847E8500857F98 /* MyMKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFAC21117847E8500857F98 /* MyMKAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +69,20 @@
 		3F157C09178318BA005F7DCE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		3F157C1317832330005F7DCE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		3F157C151783233D005F7DCE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		3F157C17178338FD005F7DCE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		3F157C19178358E2005F7DCE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		3F157C1A178358E2005F7DCE /* icon@114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@114px.png"; sourceTree = "<group>"; };
+		3F157C1D17835F69005F7DCE /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
+		3F157C1E17835F69005F7DCE /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
+		3F157C1F17835F69005F7DCE /* PlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacesViewController.xib; sourceTree = "<group>"; };
+		3F209E631784A81E0059B559 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		3F209E651784A8230059B559 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		3F209E671784A8270059B559 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		3F209E691784BD090059B559 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3F209E6B1784BD100059B559 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3F5B13071785C90500050558 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
+		3F5B130C1785FB5200050558 /* PlacesPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesPoint.h; sourceTree = "<group>"; };
+		3F5B130D1785FB5200050558 /* PlacesPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesPoint.m; sourceTree = "<group>"; };
 		3F5BE86A1782171900FC8BF9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F5BE86C17821BA300FC8BF9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3F5DC4C01782044E003650F4 /* VEJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VEJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,9 +95,6 @@
 		3F5DC4D11782044E003650F4 /* VEJ-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VEJ-Prefix.pch"; sourceTree = "<group>"; };
 		3F5DC4D21782044E003650F4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F5DC4D31782044E003650F4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3F5DC4D51782044E003650F4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		3F5DC4D71782044E003650F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		3F5DC4D91782044E003650F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3F5DC4DB1782044E003650F4 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3F5DC4DC1782044E003650F4 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3F5DC4DF1782044E003650F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -80,6 +102,9 @@
 		3F5DC4E917820469003650F4 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
 		3F5DC4EA17820469003650F4 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
 		3F5DC4EB17820469003650F4 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
+		3FFAC20B17846AC200857F98 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		3FFAC21017847E8500857F98 /* MyMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMKAnnotation.h; sourceTree = "<group>"; };
+		3FFAC21117847E8500857F98 /* MyMKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMKAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +112,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F209E6C1784BD100059B559 /* MobileCoreServices.framework in Frameworks */,
+				3F209E6A1784BD090059B559 /* SystemConfiguration.framework in Frameworks */,
+				3FFAC20C17846AC200857F98 /* MessageUI.framework in Frameworks */,
+				3F157C18178338FD005F7DCE /* Social.framework in Frameworks */,
 				3F157C161783233D005F7DCE /* Accounts.framework in Frameworks */,
 				3F157C1417832330005F7DCE /* Twitter.framework in Frameworks */,
 				3F5BE86D17821BA300FC8BF9 /* MapKit.framework in Frameworks */,
@@ -127,6 +156,17 @@
 			path = "../../../Downloads/AFNetworking-AFNetworking-d492c4b/AFNetworking";
 			sourceTree = "<group>";
 		};
+		3F157C2217835F82005F7DCE /* PlacesController */ = {
+			isa = PBXGroup;
+			children = (
+				3F157C1D17835F69005F7DCE /* PlacesViewController.h */,
+				3F157C1E17835F69005F7DCE /* PlacesViewController.m */,
+				3F157C1F17835F69005F7DCE /* PlacesViewController.xib */,
+			);
+			name = PlacesController;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		3F5DC4B71782044E003650F4 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +187,10 @@
 		3F5DC4C21782044E003650F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F209E6B1784BD100059B559 /* MobileCoreServices.framework */,
+				3F209E691784BD090059B559 /* SystemConfiguration.framework */,
+				3FFAC20B17846AC200857F98 /* MessageUI.framework */,
+				3F157C17178338FD005F7DCE /* Social.framework */,
 				3F157C1317832330005F7DCE /* Twitter.framework */,
 				3F157C151783233D005F7DCE /* Accounts.framework */,
 				3F5BE86C17821BA300FC8BF9 /* MapKit.framework */,
@@ -167,7 +211,12 @@
 				3F5DC4DC1782044E003650F4 /* MainViewController.m */,
 				3F5DC4DE1782044E003650F4 /* MainViewController_iPhone.xib */,
 				3F5DC4E11782044E003650F4 /* MainViewController_iPad.xib */,
+				3FFAC21017847E8500857F98 /* MyMKAnnotation.h */,
+				3FFAC21117847E8500857F98 /* MyMKAnnotation.m */,
+				3F5B130C1785FB5200050558 /* PlacesPoint.h */,
+				3F5B130D1785FB5200050558 /* PlacesPoint.m */,
 				3F5DC4EE178204C4003650F4 /* OptionsMenu */,
+				3F157C2217835F82005F7DCE /* PlacesController */,
 				3F157BF6178318BA005F7DCE /* AFNetworking */,
 				3F5DC4CA1782044E003650F4 /* Supporting Files */,
 			);
@@ -177,13 +226,16 @@
 		3F5DC4CA1782044E003650F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3F209E671784A8270059B559 /* Default-568h@2x.png */,
+				3F209E651784A8230059B559 /* Default@2x.png */,
+				3F209E631784A81E0059B559 /* Default.png */,
+				3F157C19178358E2005F7DCE /* icon.png */,
+				3F157C1A178358E2005F7DCE /* icon@114px.png */,
 				3F5DC4CB1782044E003650F4 /* VEJ-Info.plist */,
 				3F5DC4CC1782044E003650F4 /* InfoPlist.strings */,
 				3F5DC4CF1782044E003650F4 /* main.m */,
 				3F5DC4D11782044E003650F4 /* VEJ-Prefix.pch */,
-				3F5DC4D51782044E003650F4 /* Default.png */,
-				3F5DC4D71782044E003650F4 /* Default@2x.png */,
-				3F5DC4D91782044E003650F4 /* Default-568h@2x.png */,
+				3F5B13071785C90500050558 /* settings.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -251,12 +303,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F5DC4CE1782044E003650F4 /* InfoPlist.strings in Resources */,
-				3F5DC4D61782044E003650F4 /* Default.png in Resources */,
-				3F5DC4D81782044E003650F4 /* Default@2x.png in Resources */,
-				3F5DC4DA1782044E003650F4 /* Default-568h@2x.png in Resources */,
 				3F5DC4E01782044E003650F4 /* MainViewController_iPhone.xib in Resources */,
 				3F5DC4E31782044E003650F4 /* MainViewController_iPad.xib in Resources */,
 				3F5DC4ED17820469003650F4 /* OptionsViewController.xib in Resources */,
+				3F157C1B178358E2005F7DCE /* icon.png in Resources */,
+				3F157C1C178358E2005F7DCE /* icon@114px.png in Resources */,
+				3F157C2117835F69005F7DCE /* PlacesViewController.xib in Resources */,
+				3F209E641784A81E0059B559 /* Default.png in Resources */,
+				3F209E661784A8230059B559 /* Default@2x.png in Resources */,
+				3F209E681784A8270059B559 /* Default-568h@2x.png in Resources */,
+				3F5B13081785C90500050558 /* settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +336,9 @@
 				3F157C10178318BA005F7DCE /* AFURLConnectionOperation.m in Sources */,
 				3F157C11178318BA005F7DCE /* AFXMLRequestOperation.m in Sources */,
 				3F157C12178318BA005F7DCE /* UIImageView+AFNetworking.m in Sources */,
+				3F157C2017835F69005F7DCE /* PlacesViewController.m in Sources */,
+				3FFAC21217847E8500857F98 /* MyMKAnnotation.m in Sources */,
+				3F5B130E1785FB5200050558 /* PlacesPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
