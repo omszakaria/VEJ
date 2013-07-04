@@ -1,21 +1,35 @@
 //
-//  MyMKAnnotation.m
+//  PlacesPoint.m
 //  VEJ
 //
-//  Created by iD Student on 7/3/13.
+//  Created by iD Student on 7/4/13.
 //  Copyright (c) 2013 Omar Zakaria. All rights reserved.
 //
 
-#import "MyMKAnnotation.h"
+#import "PlacesPoint.h"
 
-@implementation MyMKAnnotation
 
-- (id)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle coordinate:(CLLocationCoordinate2D)coordinate
-{
-    self.coordinate = coordinate;
-    self.title = title;
-    self.subtitle = subtitle;
+@implementation PlacesPoint
+
+-(id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate  {
+    if ((self = [super init])) {
+        _name = [name copy];
+        _address = [address copy];
+        _coordinate = coordinate;
+        
+    }
     return self;
+}
+
+-(NSString *)title {
+    if ([_name isKindOfClass:[NSNull class]])
+        return @"Unknown charge";
+    else
+        return _name;
+}
+
+-(NSString *)subtitle {
+    return _address;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
@@ -24,9 +38,9 @@
     {
         return nil;
     }
-    else if ([annotation isKindOfClass:[MyMKAnnotation class]]) // use whatever annotation class you used when creating the annotation
+    else if ([annotation isKindOfClass:[PlacesPoint class]]) // use whatever annotation class you used when creating the annotation
     {
-        static NSString * const identifier = @"MyCustomAnnotation";
+        static NSString * const identifier = @"PlacesAnnotation";
         
         MKAnnotationView* annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         

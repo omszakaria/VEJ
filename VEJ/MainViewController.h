@@ -12,7 +12,6 @@
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
-#import "MyMKAnnotation.h"
 #import <MessageUI/MessageUI.h>
 
 @interface MainViewController : UIViewController <CLLocationManagerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
@@ -21,10 +20,17 @@
 @property (strong, nonatomic) UIViewController* optionsViewController;
 @property (weak, nonatomic) IBOutlet MKMapView* mapView;
 
+- (void) queryGooglePlaces: (NSString *) googleType;
+
+-(void)fetchedData:(NSData *)responseData;
+
+- (IBAction)toolBarButtonPressed:(UIBarButtonItem *)sender;
 
 - (IBAction)switchToOptionsView :(id)sender;
 
 - (IBAction)postToFacebook:(id)sender;
+
+-(void)plotPositions:(NSArray *)data;
 
 
 @end

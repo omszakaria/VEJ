@@ -8,11 +8,12 @@
 
 #import "MainViewController.h"
 #import "OptionsViewController.h"
-
-
+#import "PlacesPoint.h"
+#import "MyMKAnnotation.h"
 
 #define METERS_PER_MILE 1609.344
-
+#define kGOOGLE_API_KEY @"AIzaSyDtxWghvIaNEEiw6MkA8QE3AAoMHQ9uSzM"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 @interface MainViewController ()
 
@@ -22,9 +23,10 @@
 @implementation MainViewController {
     CLLocationManager* locationManager;
     CLLocationCoordinate2D touchMapCoordinate;
+    CLLocation *currentLocation;
+    int searchDistance;
+    NSString *pressedButtonTitle;
 }
-
-@synthesize optionsViewController, mapView;
 
 - (void)viewDidLoad
 {
@@ -38,7 +40,7 @@
     [locationManager startUpdatingHeading];
     UILongPressGestureRecognizer* longTouch = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(processLongTouch:)];
     longTouch.minimumPressDuration = 1.0; //user needs to press for 1.0 seconds
-    [mapView addGestureRecognizer:longTouch];
+    [self.mapView addGestureRecognizer:longTouch];
     
     // set navbar items
     [self.navigationItem setTitle:@"VEJ"];
@@ -80,10 +82,12 @@
     } else {
         self.mapView.userTrackingMode = MKUserTrackingModeNone;
     }
+
+    searchDistance = 1000;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    CLLocation *currentLocation = [locations lastObject];
+    currentLocation = [locations lastObject];
     NSLog(@"lat: %f lon: %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
 }
 
@@ -101,12 +105,9 @@
         //subtitle
         NSString* subtitle = [locData objectForKey:@"subtitle"];
             
-        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
-        MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithCoordinate:coordinates];
-        annot.coordinate = coordinates;
-        annot.title = title;
-        annot.subtitle = subtitle;
-    
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
+        MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithTitle:title subtitle:subtitle coordinate:coordinate];
+        
         [self.mapView addAnnotation:annot];
     }
 }
@@ -145,10 +146,7 @@
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithCoordinate:touchMapCoordinate];
-        annot.coordinate = touchMapCoordinate;
-        annot.title = [[alertView textFieldAtIndex:0] text];
-        annot.subtitle = [[alertView textFieldAtIndex:1]text];
+        MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithTitle:[[alertView textFieldAtIndex:0] text] subtitle:[[alertView textFieldAtIndex:1]text] coordinate:touchMapCoordinate];
         
         NSDictionary* newEntry = @{annot.title : @{
                                            @"subtitle": annot.subtitle,
@@ -163,6 +161,44 @@
         [self.mapView addAnnotation:annot];
         NSLog(@"%@", [self populate]);
     }
+}
+
+
+
+- (IBAction)toolBarButtonPressed:(UIBarButtonItem *)sender {
+    pressedButtonTitle = [sender.title lowercaseString];
+    [self queryGooglePlaces:pressedButtonTitle];
+}
+
+-(void) queryGooglePlaces: (NSString *) googleType {
+    // Build the url string to send to Google. NOTE: The kGOOGLE_API_KEY is a constant that should contain your own API key that you obtain from Google. See this link for more info:
+    // https://developers.google.com/maps/documentation/places/#Authentication
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&types=%@&sensor=true&key=%@", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude, [NSString stringWithFormat:@"%i", searchDistance], googleType, kGOOGLE_API_KEY];
+    NSLog(@"%@", url);
+    //Formulate the string as a URL object.
+    NSURL *googleRequestURL=[NSURL URLWithString:url];
+    
+    // Retrieve the results of the URL.
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: googleRequestURL];
+        [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
+    });
+}
+
+-(void)fetchedData:(NSData *)responseData {
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData
+                          
+                          options:kNilOptions
+                          error:&error];
+    
+    //The results from Google will be an array obtained from the NSDictionary object with the key "results".
+    NSArray* places = [json objectForKey:@"results"];
+    
+    //Plot points
+    [self plotPositions:places];
 }
 
 -(IBAction)switchToOptionsView:(id)sender
@@ -268,5 +304,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)plotPositions:(NSArray *)data {
+    // 1 - Remove any existing custom annotations but not the user location blue dot.
+    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+        if ([annotation isKindOfClass:[PlacesPoint class]]) {
+            [self.mapView removeAnnotation:annotation];
+        }
+    }
+    // 2 - Loop through the array of places returned from the Google API.
+    for (int i=0; i<[data count]; i++) {
+        //Retrieve the NSDictionary object in each index of the array.
+        NSDictionary* place = [data objectAtIndex:i];
+        // 3 - There is a specific NSDictionary object that gives us the location info.
+        NSDictionary *geo = [place objectForKey:@"geometry"];
+        // Get the lat and long for the location.
+        NSDictionary *loc = [geo objectForKey:@"location"];
+        // 4 - Get your name and address info for adding to a pin.
+        NSString *name=[place objectForKey:@"name"];
+        NSString *vicinity=[place objectForKey:@"vicinity"];
+        // Create a special variable to hold this coordinate info.
+        CLLocationCoordinate2D placeCoord;
+        // Set the lat and long.
+        placeCoord.latitude=[[loc objectForKey:@"lat"] doubleValue];
+        placeCoord.longitude=[[loc objectForKey:@"lng"] doubleValue];
+        // 5 - Create a new annotation.
+        PlacesPoint *placePoint = [[PlacesPoint alloc] initWithName:name address:vicinity coordinate:placeCoord];
+        [self.mapView addAnnotation:placePoint];
+    }
+}
 
 @end

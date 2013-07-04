@@ -17,6 +17,6 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *subtitle;
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
+- (id)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle coordinate:(CLLocationCoordinate2D)coordinate;
 
 @end
