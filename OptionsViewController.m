@@ -29,11 +29,11 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDir = [documentPaths objectAtIndex:0];
     settingsPath = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"settings.plist"]];
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self.optionsViewIcon setImage:[UIImage imageNamed:@"icon@114px"]];
 }
 
 - (void)didReceiveMemoryWarning

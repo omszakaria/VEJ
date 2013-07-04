@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *trackingModeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (strong, nonatomic) MFMailComposeViewController* myMail;
+@property (weak, nonatomic) IBOutlet UIImageView *optionsViewIcon;
 
 - (IBAction)changeMapType:(UISegmentedControl *)sender;
 - (IBAction)sendFeedback:(id)sender;
