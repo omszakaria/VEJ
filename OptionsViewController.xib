@@ -1139,6 +1139,7 @@
 						<string key="mapTypeSegmentedControl">UISegmentedControl</string>
 						<string key="optionsViewIcon">UIImageView</string>
 						<string key="searchDistanceLabel">UILabel</string>
+						<string key="searchDistanceSlider">UISlider</string>
 						<string key="trackingModeSegmentedControl">UISegmentedControl</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1153,6 +1154,10 @@
 						<object class="IBToOneOutletInfo" key="searchDistanceLabel">
 							<string key="name">searchDistanceLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="searchDistanceSlider">
+							<string key="name">searchDistanceSlider</string>
+							<string key="candidateClassName">UISlider</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="trackingModeSegmentedControl">
 							<string key="name">trackingModeSegmentedControl</string>
