@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 
-@interface OptionsViewController : UIViewController <MFMailComposeViewControllerDelegate>
+@interface OptionsViewController : UIViewController <MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) MFMailComposeViewController* myMail;
 
 - (IBAction)sendFeedback:(id)sender;
+- (IBAction)resetData:(id)sender;
 @end

@@ -36,12 +36,25 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     UILongPressGestureRecognizer* longTouch = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(processLongTouch:)];
-    longTouch.minimumPressDuration = 1.5; //user needs to press for 1.5 seconds
+    longTouch.minimumPressDuration = 1.0; //user needs to press for 1.0 seconds
     [mapView addGestureRecognizer:longTouch];
-    NSLog(@"Hello World");
     
+    // set navbar items
+    [self.navigationItem setTitle:@"VEJ"];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.0 green:0.7 blue:0.0 alpha:1.0]];
+    UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStyleBordered target:self action:@selector(tweetTapped:)];
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@"Options" style: UIBarButtonItemStylePlain target:self action:@selector(switchToOptionsView:)];
+    self.navigationItem.leftBarButtonItem = optionsButton;
+    self.navigationItem.rightBarButtonItem = tweetButton;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+    [self.mapView removeAnnotations:self.mapView.annotations];
     NSDictionary *JSONData = [self populate];
-    [self populateMap:JSONData];
+    if (JSONData != nil) {
+        [self populateMap:JSONData];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -62,7 +75,7 @@
         NSString* longitude = [locData objectForKey:@"longitude"];
         //subtitle
         NSString* subtitle = [locData objectForKey:@"subtitle"];
-        
+            
         CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
         MyMKAnnotation* annot = [[MyMKAnnotation alloc] initWithCoordinate:coordinates];
         annot.coordinate = coordinates;
@@ -70,7 +83,6 @@
         annot.subtitle = subtitle;
     
         [self.mapView addAnnotation:annot];
-
     }
 }
 
@@ -127,21 +139,6 @@
         NSLog(@"%@", [self populate]);
     }
 }
-
--(void)viewWillAppear:(BOOL)animated{
-    [self.navigationItem setTitle:@"VEJ"];
-    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.0 green:0.7 blue:0.0 alpha:1.0]];
-    UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStyleBordered target:self action:@selector(tweetTapped:)];
-    UIBarButtonItem *optionsButton =
-    [[UIBarButtonItem alloc]
-     initWithTitle:@"Options"
-     style: UIBarButtonItemStylePlain
-     target:self action:@selector(switchToOptionsView:)];
-    self.navigationItem.leftBarButtonItem = optionsButton;
-    self.navigationItem.rightBarButtonItem = tweetButton;
-    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
-}
-
 
 -(IBAction)switchToOptionsView:(id)sender
 {
@@ -213,11 +210,14 @@
     NSError *error;
     
     NSData *data = [NSData dataWithContentsOfFile:path];
-    
-    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
-    [fileHandler closeFile];
-    
-    return jsonDictionary;
+    if (data != nil) {
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+        [fileHandler closeFile];
+        return jsonDictionary;
+    } else {
+        [fileHandler closeFile];
+        return nil;
+    }
 }
 
 -(BOOL)persist:(NSDictionary*)info

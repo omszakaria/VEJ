@@ -83,6 +83,26 @@
        
 }
 
+- (IBAction)resetData:(id)sender {
+    UIActionSheet* deleteConf = [[UIActionSheet alloc]initWithTitle:@"Are you sure you want to delete all your saved locations?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+    
+    [deleteConf showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == actionSheet.destructiveButtonIndex){
+        NSError* error;
+        NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDir = [documentPaths objectAtIndex:0];
+        NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
+        NSFileManager* fileManager = [NSFileManager defaultManager];
+        [fileManager removeItemAtPath:path error:&error];
+        if (error) {
+            NSLog(@"Error deleting data: %@", error.localizedDescription);
+        }
+    }
+}
+
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     [self dismissViewControllerAnimated:YES completion:Nil];
 }
