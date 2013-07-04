@@ -11,8 +11,10 @@
 
 @interface OptionsViewController : UIViewController <MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (strong, nonatomic) MFMailComposeViewController* myMail;
 
+- (IBAction)changeMapType:(UISegmentedControl *)sender;
 - (IBAction)sendFeedback:(id)sender;
 - (IBAction)resetData:(id)sender;
 @end

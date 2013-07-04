@@ -55,6 +55,23 @@
     if (JSONData != nil) {
         [self populateMap:JSONData];
     }
+    
+    //load settings.plist
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"settings.plist"]];
+    NSDictionary *settingsDictionary = [[NSDictionary alloc] initWithContentsOfFile:path];
+    if (settingsDictionary == nil) {
+        settingsDictionary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
+    }
+    int mapType = [[settingsDictionary objectForKey:@"mapType"] intValue];
+    if (mapType == 1) {
+        self.mapView.mapType = MKMapTypeSatellite;
+    } else if (mapType == 2) {
+        self.mapView.mapType = MKMapTypeHybrid;
+    } else {
+        self.mapView.mapType = MKMapTypeStandard;
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {

@@ -28,6 +28,7 @@
 		3F209E681784A8270059B559 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F209E671784A8270059B559 /* Default-568h@2x.png */; };
 		3F209E6A1784BD090059B559 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F209E691784BD090059B559 /* SystemConfiguration.framework */; };
 		3F209E6C1784BD100059B559 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F209E6B1784BD100059B559 /* MobileCoreServices.framework */; };
+		3F5B13081785C90500050558 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F5B13071785C90500050558 /* settings.plist */; };
 		3F5BE86B1782171900FC8BF9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BE86A1782171900FC8BF9 /* CoreLocation.framework */; };
 		3F5BE86D17821BA300FC8BF9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BE86C17821BA300FC8BF9 /* MapKit.framework */; };
 		3F5DC4C41782044E003650F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5DC4C31782044E003650F4 /* UIKit.framework */; };
@@ -78,6 +79,7 @@
 		3F209E671784A8270059B559 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		3F209E691784BD090059B559 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3F209E6B1784BD100059B559 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3F5B13071785C90500050558 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		3F5BE86A1782171900FC8BF9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F5BE86C17821BA300FC8BF9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3F5DC4C01782044E003650F4 /* VEJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VEJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +230,7 @@
 				3F5DC4CC1782044E003650F4 /* InfoPlist.strings */,
 				3F5DC4CF1782044E003650F4 /* main.m */,
 				3F5DC4D11782044E003650F4 /* VEJ-Prefix.pch */,
+				3F5B13071785C90500050558 /* settings.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				3F209E641784A81E0059B559 /* Default.png in Resources */,
 				3F209E661784A8230059B559 /* Default@2x.png in Resources */,
 				3F209E681784A8270059B559 /* Default-568h@2x.png in Resources */,
+				3F5B13081785C90500050558 /* settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

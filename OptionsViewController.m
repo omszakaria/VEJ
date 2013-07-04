@@ -12,7 +12,9 @@
 
 @end
 
-@implementation OptionsViewController
+@implementation OptionsViewController {
+    NSString *settingsPath;
+}
 
 @synthesize myMail;
 
@@ -27,10 +29,11 @@
 
 - (void)viewDidLoad
 {
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    settingsPath = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"settings.plist"]];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,6 +42,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSDictionary *settingsDictionary = [[NSDictionary alloc] initWithContentsOfFile:settingsPath];
+    self.mapTypeSegmentedControl.selectedSegmentIndex = [[settingsDictionary objectForKey:@"mapType"] unsignedIntValue];
+}
+
+- (IBAction)changeMapType:(UISegmentedControl *)sender {
+    NSMutableDictionary *settingsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:settingsPath];
+    if (settingsDictionary == nil) {
+        settingsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
+    }
+    [settingsDictionary setValue:[NSNumber numberWithInteger:sender.selectedSegmentIndex] forKey:@"mapType"];
+    [settingsDictionary writeToFile:settingsPath atomically:NO];
+}
 
 - (IBAction)sendFeedback:(id)sender {
     NSLog(@"send feedback button pressed");
