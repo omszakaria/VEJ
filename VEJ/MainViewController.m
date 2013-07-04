@@ -333,4 +333,33 @@
     }
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+    {
+        return nil;
+    }
+    else if ([annotation isKindOfClass:[MyMKAnnotation class]]) // use whatever annotation class you used when creating the annotation
+    {
+        static NSString * const identifier = @"MyCustomAnnotation";
+        MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        
+        annotationView.canShowCallout = NO;
+        annotationView.pinColor = MKPinAnnotationColorGreen;
+        
+        return annotationView;
+    }
+    else if ([annotation isKindOfClass:[PlacesPoint class]]) // use whatever annotation class you used when creating the annotation
+    {
+        static NSString * const identifier = @"PlacesAnnotation";
+        MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        
+        annotationView.canShowCallout = NO;
+        annotationView.pinColor = MKPinAnnotationColorRed;
+        
+        return annotationView;
+    }
+    return nil;
+}
+
 @end

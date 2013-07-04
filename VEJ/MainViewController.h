@@ -14,7 +14,7 @@
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+@interface MainViewController : UIViewController <CLLocationManagerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate, MKMapViewDelegate>
 
 @property (nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) UIViewController* optionsViewController;
