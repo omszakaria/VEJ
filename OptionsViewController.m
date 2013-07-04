@@ -46,6 +46,8 @@
     NSDictionary *settingsDictionary = [[NSDictionary alloc] initWithContentsOfFile:settingsPath];
     self.mapTypeSegmentedControl.selectedSegmentIndex = [[settingsDictionary objectForKey:@"mapType"] intValue];
     self.trackingModeSegmentedControl.selectedSegmentIndex = [[settingsDictionary objectForKey:@"trackingMode"] intValue];
+    self.searchDistanceSlider.value = [[settingsDictionary objectForKey:@"searchDistance"] intValue];
+    self.searchDistanceLabel.text = [NSString stringWithFormat:@"%@ m", [NSNumber numberWithInt:self.searchDistanceSlider.value]];
 }
 
 - (IBAction)changeMapType:(UISegmentedControl *)sender {
@@ -55,6 +57,16 @@
     }
     [settingsDictionary setValue:[NSNumber numberWithInteger:sender.selectedSegmentIndex] forKey:@"mapType"];
     [settingsDictionary writeToFile:settingsPath atomically:NO];
+}
+
+- (IBAction)changeSearchDistance:(UISlider *)sender {
+    NSMutableDictionary *settingsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:settingsPath];
+    if (settingsDictionary == nil) {
+        settingsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
+    }
+    [settingsDictionary setValue:[NSNumber numberWithInteger:sender.value] forKey:@"searchDistance"];
+    [settingsDictionary writeToFile:settingsPath atomically:NO];
+    self.searchDistanceLabel.text = [NSString stringWithFormat:@"%@ m", [NSNumber numberWithInt:sender.value]];
 }
 
 - (IBAction)sendFeedback:(id)sender {

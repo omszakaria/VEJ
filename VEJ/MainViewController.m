@@ -68,6 +68,7 @@
     }
     int mapType = [[settingsDictionary objectForKey:@"mapType"] intValue];
     int trackingMode = [[settingsDictionary objectForKey:@"trackingMode"] intValue];
+    int settingsSearchDistance = [[settingsDictionary objectForKey:@"searchDistance"] intValue];
     if (mapType == 1) {
         self.mapView.mapType = MKMapTypeSatellite;
     } else if (mapType == 2) {
@@ -83,7 +84,7 @@
         self.mapView.userTrackingMode = MKUserTrackingModeNone;
     }
 
-    searchDistance = 1000;
+    searchDistance = settingsSearchDistance;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
