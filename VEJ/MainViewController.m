@@ -35,6 +35,7 @@
     locationManager.distanceFilter = 1.0;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    [locationManager startUpdatingHeading];
     UILongPressGestureRecognizer* longTouch = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(processLongTouch:)];
     longTouch.minimumPressDuration = 1.0; //user needs to press for 1.0 seconds
     [mapView addGestureRecognizer:longTouch];
@@ -49,7 +50,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     [self.mapView removeAnnotations:self.mapView.annotations];
     NSDictionary *JSONData = [self populate];
     if (JSONData != nil) {
@@ -65,12 +65,20 @@
         settingsDictionary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
     }
     int mapType = [[settingsDictionary objectForKey:@"mapType"] intValue];
+    int trackingMode = [[settingsDictionary objectForKey:@"trackingMode"] intValue];
     if (mapType == 1) {
         self.mapView.mapType = MKMapTypeSatellite;
     } else if (mapType == 2) {
         self.mapView.mapType = MKMapTypeHybrid;
     } else {
         self.mapView.mapType = MKMapTypeStandard;
+    }
+    if (trackingMode == 0) {
+        self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+    } else if (trackingMode == 1){
+        self.mapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
+    } else {
+        self.mapView.userTrackingMode = MKUserTrackingModeNone;
     }
 }
 

@@ -44,7 +44,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSDictionary *settingsDictionary = [[NSDictionary alloc] initWithContentsOfFile:settingsPath];
-    self.mapTypeSegmentedControl.selectedSegmentIndex = [[settingsDictionary objectForKey:@"mapType"] unsignedIntValue];
+    self.mapTypeSegmentedControl.selectedSegmentIndex = [[settingsDictionary objectForKey:@"mapType"] intValue];
+    self.trackingModeSegmentedControl.selectedSegmentIndex = [[settingsDictionary objectForKey:@"trackingMode"] intValue];
 }
 
 - (IBAction)changeMapType:(UISegmentedControl *)sender {
@@ -103,6 +104,15 @@
     UIActionSheet* deleteConf = [[UIActionSheet alloc]initWithTitle:@"Are you sure you want to delete all your saved locations?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
     
     [deleteConf showInView:self.view];
+}
+
+- (IBAction)changeTrackingMode:(UISegmentedControl *)sender {
+    NSMutableDictionary *settingsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:settingsPath];
+    if (settingsDictionary == nil) {
+        settingsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"]];
+    }
+    [settingsDictionary setValue:[NSNumber numberWithInteger:sender.selectedSegmentIndex] forKey:@"trackingMode"];
+    [settingsDictionary writeToFile:settingsPath atomically:NO];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{

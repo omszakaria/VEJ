@@ -10,11 +10,14 @@
 #import <MessageUI/MessageUI.h>
 
 @interface OptionsViewController : UIViewController <MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
-
+@property (weak, nonatomic) IBOutlet UISegmentedControl *trackingModeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 @property (strong, nonatomic) MFMailComposeViewController* myMail;
 
 - (IBAction)changeMapType:(UISegmentedControl *)sender;
 - (IBAction)sendFeedback:(id)sender;
 - (IBAction)resetData:(id)sender;
+
+- (IBAction)changeTrackingMode:(UISegmentedControl *)sender;
+
 @end
