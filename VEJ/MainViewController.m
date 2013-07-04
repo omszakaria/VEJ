@@ -345,7 +345,7 @@
         static NSString * const identifier = @"MyCustomAnnotation";
         MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         
-        annotationView.canShowCallout = NO;
+        annotationView.canShowCallout = YES;
         annotationView.pinColor = MKPinAnnotationColorGreen;
         
         return annotationView;
@@ -355,7 +355,7 @@
         static NSString * const identifier = @"PlacesAnnotation";
         MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         
-        annotationView.canShowCallout = NO;
+        annotationView.canShowCallout = YES;
         annotationView.pinColor = MKPinAnnotationColorRed;
         
         return annotationView;
